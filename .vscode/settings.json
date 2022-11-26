@@ -1,0 +1,18 @@
+{
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "idf.flashType": "UART",
+    "idf.port": "/dev/ttyUSB0",
+    "idf.adapterTargetName": "esp32",
+    "files.associations": {
+        "freertos.h": "c",
+        "sdkconfig.h": "c",
+        "gpio.h": "c",
+        "output_iot.h": "c",
+        "input_iot.h": "c",
+        "input_touch_iot.h": "c",
+        "esp_log.h": "c",
+        "touch_pad.h": "c",
+        "rtc_periph.h": "c",
+        "sens_periph.h": "c"
+    }
+}
