@@ -16,6 +16,9 @@
         "sens_periph.h": "c",
         "my_led.h": "c",
         "output_io.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "esp_err.h": "c",
+        "gpio_types.h": "c",
+        "my_7_led.h": "c"
     }
 }

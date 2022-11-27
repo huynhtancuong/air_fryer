@@ -34,7 +34,7 @@ static void touch_input_handler(void* arg) {
 static void set_thresholds(touch_pad_t touch_pad_num, uint16_t value) {
     uint32_t init_value = 0;
     uint32_t sum_init_value = 0;
-    uint32_t num_sample = 100;
+    uint32_t num_sample = 50;
     
     uint32_t i = num_sample;
     while(i) {
