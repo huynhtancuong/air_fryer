@@ -46,10 +46,10 @@ void input_event_callback(int pin) {
 
 void input_touch_event_callback(touch_pad_t touch_pad_num) {
     if(touch_pad_num == BUTTON_MINUS) {
-        output_io_toggle(LED_5);
+        my_led_set_level(leds[7], LED_STATE_ON);
     }
     if(touch_pad_num == BUTTON_PLUS) {
-        output_io_toggle(LED_4);
+        my_led_set_level(leds[8], LED_STATE_ON);
     }
 }
 
@@ -80,26 +80,26 @@ void app_main(void)
     input_touch_set_callback(input_touch_event_callback);
     input_touch_init();
     input_touch_io_create(BUTTON_PLUS, 725);
-    // input_touch_io_create(BUTTON_MINUS, 445);
+    input_touch_io_create(BUTTON_MINUS, 190);
 
     
-    leds[0] = (my_led_t) { .plus_pin = GPIO_NUM_0, .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 4
-    leds[1] = (my_led_t) { .plus_pin = GPIO_NUM_4, .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 5
-    leds[2] = (my_led_t) { .plus_pin = GPIO_NUM_2, .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 5
-    leds[3] = (my_led_t) { .plus_pin = GPIO_NUM_16, .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 5
-    leds[4] = (my_led_t) { .plus_pin = GPIO_NUM_17, .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 4
-    leds[5] = (my_led_t) { .plus_pin = GPIO_NUM_5, .minus_pin= GPIO_NUM_25, .is_on=0}; // LED 5
-    leds[6] = (my_led_t) { .plus_pin = GPIO_NUM_15, .minus_pin= GPIO_NUM_25, .is_on=0}; // LED 5
-    leds[7] = (my_led_t) { .plus_pin = GPIO_NUM_18, .minus_pin= GPIO_NUM_25, .is_on=0}; // LED 5
+    leds[0] = (my_led_t)    { .plus_pin = GPIO_NUM_0,   .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 4
+    leds[1] = (my_led_t)    { .plus_pin = GPIO_NUM_4,   .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 5
+    leds[2] = (my_led_t)    { .plus_pin = GPIO_NUM_2,   .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 5
+    leds[3] = (my_led_t)    { .plus_pin = GPIO_NUM_16,  .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 5
+    leds[4] = (my_led_t)    { .plus_pin = GPIO_NUM_17,  .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 4
+    leds[5] = (my_led_t)    { .plus_pin = GPIO_NUM_5,   .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 5
+    leds[6] = (my_led_t)    { .plus_pin = GPIO_NUM_15,  .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 5
+    leds[7] = (my_led_t)    { .plus_pin = GPIO_NUM_18,  .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 5
 
-    leds[8] = (my_led_t) { .plus_pin = GPIO_NUM_0, .minus_pin= GPIO_NUM_26, .is_on=0}; // LED 4
-    leds[9] = (my_led_t) { .plus_pin = GPIO_NUM_4, .minus_pin= GPIO_NUM_26, .is_on=0}; // LED 5
-    leds[10] = (my_led_t) { .plus_pin = GPIO_NUM_2, .minus_pin= GPIO_NUM_26, .is_on=0}; // LED 5
-    leds[11] = (my_led_t) { .plus_pin = GPIO_NUM_16, .minus_pin= GPIO_NUM_26, .is_on=0}; // LED 5
-    leds[12] = (my_led_t) { .plus_pin = GPIO_NUM_17, .minus_pin= GPIO_NUM_26, .is_on=0}; // LED 4
-    leds[13] = (my_led_t) { .plus_pin = GPIO_NUM_5, .minus_pin= GPIO_NUM_26, .is_on=0}; // LED 5
-    leds[14] = (my_led_t) { .plus_pin = GPIO_NUM_15, .minus_pin= GPIO_NUM_26, .is_on=0}; // LED 5
-    leds[15] = (my_led_t) { .plus_pin = GPIO_NUM_18, .minus_pin= GPIO_NUM_26, .is_on=1}; // LED 5
+    leds[8] = (my_led_t)    { .plus_pin = GPIO_NUM_0,   .minus_pin= GPIO_NUM_26, .is_on=1}; // LED 4
+    leds[9] = (my_led_t)    { .plus_pin = GPIO_NUM_4,   .minus_pin= GPIO_NUM_26, .is_on=1}; // LED 5
+    leds[10] = (my_led_t)   { .plus_pin = GPIO_NUM_2,   .minus_pin= GPIO_NUM_26, .is_on=1}; // LED 5
+    leds[11] = (my_led_t)   { .plus_pin = GPIO_NUM_16,  .minus_pin= GPIO_NUM_26, .is_on=1}; // LED 5
+    leds[12] = (my_led_t)   { .plus_pin = GPIO_NUM_17,  .minus_pin= GPIO_NUM_26, .is_on=1}; // LED 4
+    leds[13] = (my_led_t)   { .plus_pin = GPIO_NUM_5,   .minus_pin= GPIO_NUM_26, .is_on=1}; // LED 5
+    leds[14] = (my_led_t)   { .plus_pin = GPIO_NUM_15,  .minus_pin= GPIO_NUM_26, .is_on=1}; // LED 5
+    leds[15] = (my_led_t)   { .plus_pin = GPIO_NUM_18,  .minus_pin= GPIO_NUM_26, .is_on=1}; // LED 5
     
 
     for (int i = 0; i<NUM_LED; i++) {
