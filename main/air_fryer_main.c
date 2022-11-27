@@ -68,9 +68,9 @@ void show_temp() {
 
 void show_time(uint16_t time) {
     // if (time > 99) time=99;
-    my_7_led_set_digit(&leds_seg[0], 0);
-    my_7_led_set_digit(&leds_seg[1], time/10);
-    my_7_led_set_digit(&leds_seg[2], time%10);
+    // my_7_led_set_digit(&leds_seg[0], 0);
+    // my_7_led_set_digit(&leds_seg[1], time/10);
+    // my_7_led_set_digit(&leds_seg[2], time%10);
 }
 
 void input_event_callback(int pin) {
@@ -99,8 +99,14 @@ void input_touch_event_callback(touch_pad_t touch_pad_num) {
             time+=5;
         }
     }
-    ESP_LOGI("TEMP TIME", "time: %d \t, temp: %d", time, temp);
-    change_mode_counter = 1;
+    if(touch_pad_num==BUTTON_TIME) {
+        current_menu=MENU_TIME;
+    }
+    if(touch_pad_num==BUTTON_TEMP) {
+        current_menu=MENU_TEMP;
+    }
+    // ESP_LOGI("TEMP TIME", "time: %d \t, temp: %d", time, temp);
+    // change_mode_counter = 1;
 }
 
 
@@ -110,13 +116,13 @@ void led_matrix() {
         // for menu led
         // ESP_LOGI("LED MATRIX","I'm hehe");
         output_io_set_level(GPIO_NUM_27, 0);
-        for (int i = 0; i<8; i++) {
+        for (int i = 0; i<NUM_LED; i++) {
             if (leds[i].is_on) {
                 my_led_set_level(leds[i], 1);
             }
         }
         vTaskDelay(speed / portTICK_PERIOD_MS);
-        for (int i = 0; i<8; i++) {
+        for (int i = 0; i<NUM_LED; i++) {
             my_led_set_level(leds[i], 0);
         }
         output_io_set_level(GPIO_NUM_27, 1);
@@ -149,13 +155,13 @@ void change_menu() {
             show_temp();
         }
         if (current_menu==MENU_TIME) {
-            show_time(4);
+            show_time(time);
         }
-        if (change_mode_counter++ % 10 == 0) {
-            current_menu = (current_menu+1)%MENU_MAX;
-            ESP_LOGI("CHANGE MENU", "Changed menu to %d", current_menu);
-        }
-        ESP_LOGI("CHANGE MENU","Checking...");
+        // if (change_mode_counter++ % 10 == 0) {
+        //     current_menu = (current_menu+1)%MENU_MAX;
+        //     // ESP_LOGI("CHANGE MENU", "Changed menu to %d", current_menu);
+        // }
+        // ESP_LOGI("CHANGE MENU","Checking...");
         vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 }
@@ -204,7 +210,7 @@ void app_main(void)
     // my_7_led_set_state(&leds_seg[0], 0b1101100);
     // my_7_led_set_state(leds_seg[2], 0b1101111);
     xTaskCreate(&led_matrix, "led_matrix", 2048, NULL, 4, NULL);
-    xTaskCreate(&change_menu, "change_menu", 2048, NULL, 4, NULL);
+    xTaskCreate(&change_menu, "change_menu", 2048, NULL, 3, NULL);
     // xTaskCreate(&led_7, "led_7", 2048, NULL, 5, NULL);
 
     show_temp();
