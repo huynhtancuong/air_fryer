@@ -1,10 +1,6 @@
 #include <stdio.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "driver/gpio.h"
-#include "esp_log.h"
-#include "sdkconfig.h"
-#include "output_iot.h"
+#include "output_io.h"
 
 
 void output_io_create(gpio_num_t gpio_num) {

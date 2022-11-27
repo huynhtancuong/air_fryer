@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${default}",
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/common/output_io"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

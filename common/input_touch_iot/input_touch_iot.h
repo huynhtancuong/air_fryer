@@ -14,6 +14,6 @@ typedef void input_touch_callback_t(touch_pad_t);
 
 void input_touch_io_create(touch_pad_t touch_pad_num, uint16_t threshold_value);
 void input_touch_set_callback(void *cb);
-
+void input_touch_init();
 
 #endif

@@ -13,6 +13,9 @@
         "esp_log.h": "c",
         "touch_pad.h": "c",
         "rtc_periph.h": "c",
-        "sens_periph.h": "c"
+        "sens_periph.h": "c",
+        "my_led.h": "c",
+        "output_io.h": "c",
+        "stdio.h": "c"
     }
 }
