@@ -46,7 +46,7 @@ static void set_thresholds(touch_pad_t touch_pad_num, uint16_t value) {
         // ESP_LOGI(TAG, "test init: touch pad [%d] val is %d", touch_pad_num, init_value);
         vTaskDelay(10 / portTICK_PERIOD_MS);
     }
-    uint32_t threshold_val = sum_init_value/num_sample-25;
+    uint32_t threshold_val = sum_init_value/num_sample-value;
     ESP_LOGI(TAG, "Init completed: touch pad [%d] threshold val is %d", touch_pad_num, threshold_val);
     s_pad_threshold[touch_pad_num] = threshold_val;
 }

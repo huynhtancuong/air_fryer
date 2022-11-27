@@ -23,8 +23,12 @@
 #define BLINK_GPIO 2
 
 // define touch button
-#define BUTTON_PLUS TOUCH_PAD_NUM9
-#define BUTTON_MINUS TOUCH_PAD_NUM8
+#define BUTTON_PLUS     TOUCH_PAD_NUM9
+#define BUTTON_MINUS    TOUCH_PAD_NUM8
+#define BUTTON_MENU     TOUCH_PAD_NUM7
+#define BUTTON_TIME     TOUCH_PAD_NUM5
+#define BUTTON_TEMP     TOUCH_PAD_NUM6
+#define BUTTON_POWER    TOUCH_PAD_NUM4
 
 // define led
 #define MINUS_LED_1 GPIO_NUM_25
@@ -60,7 +64,7 @@ void led_matrix() {
             if (leds[i].is_on){
                 my_led_set_level(leds[i], LED_STATE_ON);
                 vTaskDelay(multiplexing_speed / portTICK_PERIOD_MS);
-                my_led_set_level(leds[i], LED_STATE_OFF);
+                // my_led_set_level(leds[i], LED_STATE_OFF);
             }
             else {
                 my_led_set_level(leds[i], LED_STATE_OFF);
@@ -79,8 +83,13 @@ void app_main(void)
 
     input_touch_set_callback(input_touch_event_callback);
     input_touch_init();
-    input_touch_io_create(BUTTON_PLUS, 725);
-    input_touch_io_create(BUTTON_MINUS, 190);
+    input_touch_io_create(BUTTON_PLUS, 20);
+    input_touch_io_create(BUTTON_MINUS, 20);
+    input_touch_io_create(BUTTON_MENU, 20);
+    input_touch_io_create(BUTTON_POWER, 10);
+    input_touch_io_create(BUTTON_TEMP, 10);
+    input_touch_io_create(BUTTON_TIME, 15);
+    
 
     
     leds[0] = (my_led_t)    { .plus_pin = GPIO_NUM_0,   .minus_pin= GPIO_NUM_25, .is_on=1}; // LED 4
